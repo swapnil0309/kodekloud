@@ -1,9 +1,10 @@
 name: first GA workflow
+
 on: push
 
 jobs:
   first_job:
-    runs_on: ubuntu_latest
+    runs-on: ubuntu_latest
     steps:
     - name: welcome messgae
-      run: echo "welcome to the GA actions"
+      run: echo "welcome to the GA actions"s
