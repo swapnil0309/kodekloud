@@ -8,3 +8,12 @@ jobs:
     steps:
     - name: welcome messgae
       run: echo "welcome to the GA actions"s
+
+    - name: checkout repository
+      uses: actions/checkout@v4
+
+    - name: list files
+      run : ls
+
+    - name: print readme file
+      run: cat README.md
