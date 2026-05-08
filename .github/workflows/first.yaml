@@ -1,7 +1,5 @@
 name: first GA workflow
-
 on: push
-
 jobs:
 
   first_job:
@@ -13,8 +11,8 @@ jobs:
     - name: checkout repository
       uses: actions/checkout@v4
 
-    - name: list files
-      run : ls
-
-    - name: print readme file
-      run: cat README.md
+    - name: Run commands
+      run : |
+           echo "welcome to the GA actions"
+           ls
+           cat README.md
