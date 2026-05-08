@@ -12,7 +12,6 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run commands
-      run : |
-           echo "welcome to the GA actions"
-           ls
-           cat README.md
+      run : ./script.sh
+      
+           
