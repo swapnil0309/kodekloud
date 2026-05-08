@@ -3,11 +3,12 @@ name: first GA workflow
 on: push
 
 jobs:
+
   first_job:
     runs-on: ubuntu-latest
     steps:
     - name: welcome messgae
-      run: echo "welcome to the GA actions"s
+      run: echo "welcome to the GA actions"
 
     - name: checkout repository
       uses: actions/checkout@v4
