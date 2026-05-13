@@ -1,7 +1,7 @@
 name: first GA workflow
 on: push
 jobs:
-  
+
   built_job:
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +19,8 @@ jobs:
     - name: Upload cowsay file 
       uses: actions/upload-artifact@v4
       with:
-        name: cowsay-file
+        name: cowsay-txt-file
+        path: cosway.txt
 
   test_job:
     runs-on: ubuntu-latest
@@ -28,7 +29,7 @@ jobs:
     - name: Download cowsay file
       uses: actions/download-artifact@v4
       with:
-        name: cowsay-file
+        name: cowsay-txt-file
 
     - name: check cowsay file
       run: grep -i 'swapnil' cowsay.txt
