@@ -5,7 +5,7 @@ jobs:
   built_job:
     runs-on: ubuntu-latest
     steps:
-    - name: welcome messgae
+    - name: welcome message
       run: echo "welcome to the GA actions"
 
     - name: checkout repository
@@ -15,12 +15,15 @@ jobs:
       run : |
           chmod +x ./script.sh
           ./script.sh
+    
+    - name : create cowsay file
+      run:   cowsay "Hello, Swapnil!" > cowsay.txt
 
     - name: Upload cowsay file 
       uses: actions/upload-artifact@v4
       with:
         name: cowsay-txt-file
-        path: cosway.txt
+        path: cowsay.txt
 
   test_job:
     runs-on: ubuntu-latest
