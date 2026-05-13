@@ -44,7 +44,7 @@ jobs:
     - name: Download cowsay file
       uses: actions/download-artifact@v4
       with:
-        name: cowsay-file
+        name: cowsay-txt-file
   
     - name: Read cowsay file
       run: cat cowsay.txt
