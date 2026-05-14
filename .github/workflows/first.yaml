@@ -5,7 +5,10 @@ concurrency:
   cancel-in-progress: true
 jobs:
   built_job:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
     steps:
     - name: welcome message
       run: echo "welcome to the GA actions"
@@ -21,38 +24,38 @@ jobs:
     - name : create cowsay file
       run:   cowsay "Hello, Swapnil!" > cowsay.txt
 
-    - name: Upload cowsay file 
-      uses: actions/upload-artifact@v4
-      with:
-        name: cowsay-txt-file
-        path: cowsay.txt
+    # - name: Upload cowsay file 
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: cowsay-txt-file
+    #     path: cowsay.txt
 
-  test_job:
-    runs-on: ubuntu-latest
-    needs: built_job
-    steps:
-    - name: Download cowsay file
-      uses: actions/download-artifact@v4
-      with:
-        name: cowsay-txt-file
+  # test_job:
+  #   runs-on: ubuntu-latest
+  #   needs: built_job
+  #   steps:
+  #   - name: Download cowsay file
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: cowsay-txt-file
 
-    - name: check cowsay file
-      run: grep -i 'swapnil' cowsay.txt
+  #   - name: check cowsay file
+  #     run: grep -i 'swapnil' cowsay.txt
 
-    - name: sleep for 20 seconds
-      run: sleep 20
+  #   - name: sleep for 20 seconds
+  #     run: sleep 20
 
-  deploy_job:
-    needs: [test_job]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Download cowsay file
-      uses: actions/download-artifact@v4
-      with:
-        name: cowsay-txt-file
+  # deploy_job:
+  #   needs: [test_job]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Download cowsay file
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: cowsay-txt-file
 
-    - name: List the files in the current directory
-      run: ls -la
+  #   - name: List the files in the current directory
+  #     run: ls -la
   
-    - name: Read cowsay file
-      run: cat cowsay.txt
+  #   - name: Read cowsay file
+  #     run: cat cowsay.txt
