@@ -1,7 +1,7 @@
-name: first GA workflow
+name: First GA workflow
 on: push
 jobs:
-
+  
   built_job:
     runs-on: ubuntu-latest
     steps:
