@@ -1,5 +1,8 @@
 name: First GA workflow
 on: workflow_dispatch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   built_job:
     runs-on: ubuntu-latest
@@ -42,9 +45,6 @@ jobs:
   deploy_job:
     needs: [test_job]
     runs-on: ubuntu-latest
-    concurrency:
-      group: deploy_job
-      cancel-in-progress: true
     steps:
     - name: Download cowsay file
       uses: actions/download-artifact@v4
