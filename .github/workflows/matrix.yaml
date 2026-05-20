@@ -2,7 +2,7 @@ name: Matrix Workflow
 on: workflow_dispatch
 jobs:
   deploy:
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         strategy:
           fail-fast: false
           max-parallel: 2
