@@ -1,0 +1,28 @@
+name: Matrix Workflow
+on: workflow_dispatch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  example_matrix_job:
+    strategy:
+      matrix:
+        max-parallel: 2
+        os: [ubuntu-latest, windows-latest]
+        version: [10, 12, 14]
+    deploy-on-ubutu:
+        runs-on: {{ matrix.os }}
+        steps:
+        - name: welcome message
+          run: echo "welcome to the GA actions"
+        - name: Run image
+          run: echo "docker run --rm hello-world"
+
+    deploy-on-windows:
+        runs-on: {{ matrix.os }}
+        steps:
+        - name: Echo docker details
+          run: docker info
+        - name: Run image
+          run: docker run --rm hello-world
+
