@@ -10,7 +10,7 @@ jobs:
         max-parallel: 2
         os: [ubuntu-latest, windows-latest]
         version: [10, 12, 14]
-    deploy-on-ubutu:
+  deploy-on-ubutu:
         runs-on: {{ matrix.os }}
         steps:
         - name: welcome message
@@ -18,7 +18,7 @@ jobs:
         - name: Run image
           run: echo "docker run --rm hello-world"
 
-    deploy-on-windows:
+  deploy-on-windows:
         runs-on: {{ matrix.os }}
         steps:
         - name: Echo docker details
