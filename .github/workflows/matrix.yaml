@@ -3,9 +3,17 @@ on: workflow_dispatch
 jobs:
   deploy:
         strategy:
+          fail-fast: false
+          max-parallel: 2
           matrix:
             os: [ubuntu-latest, windows-latest]
-            images: [hello-world, alpine:latest]
+            images: [hello-world, alpine]
+            include:
+            - os: amd64/alpine
+              images: ubuntu:latest
+            exclude:
+            - os: windows-latest
+              images: alpine
         runs-on: ${{ matrix.os }}
         steps:
         - name: welcome message
