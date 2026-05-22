@@ -1,6 +1,5 @@
 name: Docker Containerization
-on: workflow_dispatch
-    push
+on: [workflow_dispatch,push]
 jobs:
   docker_connect:
     runs-on: ubuntu-latest
